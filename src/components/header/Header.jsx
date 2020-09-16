@@ -22,7 +22,6 @@ const useStyles = makeStyles((theme) => ({
 
 function Header(props) {
   const classes = useStyles();
-  const {  title } = props;
 
   return (
     <React.Fragment>
@@ -36,7 +35,7 @@ function Header(props) {
           className={classes.toolbarTitle}
           onClick={() => props.history.push("/home")}
         >
-          {title}
+          Cereal and Coffee
         </Typography>
         <Button 
           size="small" 

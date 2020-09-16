@@ -1,20 +1,17 @@
 import React from 'react';
-import ProductsMain from './ProductsMain';
 import Header from '../header/Header';
 import Footer from '../footer/Footer';
+import ProductDetails from './ProductDetails';
 import Container from '@material-ui/core/Container';
 
-export default function Products() {
+export default function ProductDetailsPage() {
     return (
         <React.Fragment>
-            <Container >
-                <Header title="Cereal and Coffee"/>
-                {/* content */}
-                <ProductsMain />
-                {/* end content */}
+            <Container maxWidth="lg">
+                <Header />
+                <ProductDetails />
                 <Footer />
             </Container>
         </React.Fragment>
-    );
-  }
-  
+    )
+};

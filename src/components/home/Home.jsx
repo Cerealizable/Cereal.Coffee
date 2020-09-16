@@ -6,6 +6,7 @@ import Container from '@material-ui/core/Container';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import MainFeaturedPost from '../featured/FeaturedMainPost';
 import FeaturedPost from '../featured/FeaturedProduct';
+// replace by hook
 import ProductsMain from '../product/ProductsMain';
 import Sidebar from '../sidebar/Sidebar';
 import Typography from '@material-ui/core/Typography';
@@ -48,7 +49,6 @@ const featuredPosts = [
     imageText: 'Image Text',
   }
 ];
-
 
 const sidebar = {
   title: 'About',
