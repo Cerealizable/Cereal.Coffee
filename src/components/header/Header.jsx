@@ -5,7 +5,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { withRouter } from 'react-router-dom';
-
+import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
@@ -43,6 +43,12 @@ function Header(props) {
           onClick={() => props.history.push("/products")}
         >
           View Products
+        </Button>
+        <Button 
+          size="small"
+          onClick={() => props.history.push("/products")}
+          >
+          <ShoppingCartOutlinedIcon />
         </Button>
       </Toolbar>
     </React.Fragment>

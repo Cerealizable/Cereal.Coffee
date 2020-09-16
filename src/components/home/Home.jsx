@@ -6,7 +6,7 @@ import Container from '@material-ui/core/Container';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import MainFeaturedPost from '../featured/FeaturedMainPost';
 import FeaturedPost from '../featured/FeaturedProduct';
-import ProductsMain from '../products/ProductsMain';
+import ProductsMain from '../product/ProductsMain';
 import Sidebar from '../sidebar/Sidebar';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
