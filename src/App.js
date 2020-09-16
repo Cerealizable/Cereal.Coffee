@@ -1,25 +1,23 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import 'fontsource-roboto';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import { Route, Switch } from 'react-router-dom';
+import Home from './components/home/Home';
+import Products from './components/products/Products';
+import {BrowserRouter as Router} from 'react-router-dom';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <CssBaseline >
+        <Router>
+          <Switch>
+            {/* routes goes here */}
+            <Route path="/home" exact component={Home}/>
+            <Route path="/products" exact component={Products}/>
+            <Route apth="/" render={() => <div>OOPS! This doesn't exist.</div>} />
+          </Switch>
+        </Router>
+    </CssBaseline>
   );
 }
 
