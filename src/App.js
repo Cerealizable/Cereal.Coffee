@@ -7,6 +7,8 @@ import Home from './components/home/Home';
 import Products from './components/product/Products';
 import ProductDetailsPage from './components/product/ProductDetailsPage';
 
+
+
 function App() {
   return (
     <CssBaseline >
