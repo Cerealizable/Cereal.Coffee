@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
@@ -8,7 +8,8 @@ import CardMedia from '@material-ui/core/CardMedia';
 import CardActions from '@material-ui/core/CardActions';
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
-import { useFetch } from '../../hooks/productsHook';
+
+import {products as importedProducts} from '../../data/products';
 
 const useStyles = makeStyles((theme) => ({
   cardGrid: {
@@ -34,28 +35,16 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ProductsMain() {
   const classes = useStyles();
-
-  const [query, setQuery] = useState('');
-
-	const url = query && `test + ${query}`;
-
-	const { status, data, error } = useFetch(url);
-
-	const handleSubmit = (e) => {
-		e.preventDefault();
-
-		const query = e.target.search.value;
-		if (query) {
-			setQuery(query);
-			e.target.search.value = '';
-		}
-  };
   
-  const products = data;
-
+  const [products, setProducts] = useState(importedProducts);
 
   return (
       <React.Fragment>
+        { products == null && 
+            <Typography className={classes.priceContent}>
+              No Coffee found at this time.
+            </Typography>
+        }
         { products != null &&
             <Container className={classes.cardGrid} maxWidth="md">
                 <Grid container spacing={4}>
