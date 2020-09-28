@@ -33,7 +33,7 @@ function Header(props) {
           align="center"
           noWrap
           className={classes.toolbarTitle}
-          onClick={() => props.history.push("/home")}
+          onClick={() => props.history.push("/")}
         >
           Cereal and Coffee
         </Typography>
