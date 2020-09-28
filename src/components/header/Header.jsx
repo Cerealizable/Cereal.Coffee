@@ -26,6 +26,18 @@ function Header(props) {
   return (
     <React.Fragment>
       <Toolbar className={classes.toolbar}>
+        <Button 
+          size="small" 
+          onClick={() => props.history.push("/signup")}
+        >
+          Sign up
+        </Button>
+        <Button 
+          size="small" 
+          onClick={() => props.history.push("/login")}
+        >
+          Login
+        </Button>
         <Typography
           component="h2"
           variant="h5"
