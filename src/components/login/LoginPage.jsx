@@ -1,13 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import Icon from "@material-ui/core/Icon";
 // @material-ui/icons
 import Email from "@material-ui/icons/Email";
-import People from "@material-ui/icons/People";
 // core components
-import Footer from "../footer/Footer";
 import GridContainer from "../grid/GridContainer";
 import GridItem from "../grid/GridItem";
 import Button from "../customButtons/Button";
@@ -24,7 +22,17 @@ import image from "../../assets/img/bgLogin.jpg";
 const useStyles = makeStyles(styles);
 
 export default function LoginPage(props) {
-  const [cardAnimaton, setCardAnimation] = React.useState("cardHidden");
+  const [cardAnimaton, setCardAnimation] = useState("cardHidden");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  function validateForm() {
+    return email.length > 0 && password.length > 0;
+  };
+
+  function handleSubmit(e) {
+    e.preventDefault();
+  };
   
   setTimeout(function() {
     setCardAnimation("");
@@ -46,7 +54,7 @@ export default function LoginPage(props) {
           <GridContainer justify="center">
             <GridItem xs={12} sm={12} md={4}>
               <Card className={classes[cardAnimaton]}>
-                <form className={classes.form}>
+                <form className={classes.form} onSubmit={handleSubmit}>
                   <CardHeader color="primary" className={classes.cardHeader}>
                     <h4>Login</h4>
                   </CardHeader>
@@ -54,10 +62,14 @@ export default function LoginPage(props) {
                     <CustomInput
                       labelText="Email..."
                       id="email"
+                      value={email}
                       formControlProps={{
                         fullWidth: true
                       }}
                       inputProps={{
+                        onChange: (e) => setEmail(e.target.value),
+                        autoFocus: true,
+                        autoComplete: true,
                         type: "email",
                         endAdornment: (
                           <InputAdornment position="end">
@@ -69,10 +81,12 @@ export default function LoginPage(props) {
                     <CustomInput
                       labelText="Password"
                       id="pass"
+                      value={password}
                       formControlProps={{
                         fullWidth: true
                       }}
                       inputProps={{
+                        onChange: (e) => setPassword(e.target.value),
                         type: "password",
                         endAdornment: (
                           <InputAdornment position="end">
@@ -86,7 +100,12 @@ export default function LoginPage(props) {
                     />
                   </CardBody>
                   <CardFooter className={classes.cardFooter}>
-                    <Button simple color="primary" size="lg">
+                    <Button 
+                      simple color="primary" 
+                      size="lg"
+                      type="submit"
+                      disabled={!validateForm()}
+                    >
                       Get started
                     </Button>
                   </CardFooter>
@@ -95,7 +114,6 @@ export default function LoginPage(props) {
             </GridItem>
           </GridContainer>
         </div>
-        <Footer whiteFont />
       </div>
     </div>
   );

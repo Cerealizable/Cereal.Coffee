@@ -36,6 +36,7 @@ const useStyles = makeStyles((theme) => ({
 export default function ProductsMain() {
   const classes = useStyles();
   
+  // eslint-disable-next-line
   const [products, setProducts] = useState(importedProducts);
 
   return (

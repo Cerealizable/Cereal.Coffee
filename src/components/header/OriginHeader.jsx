@@ -10,7 +10,6 @@ import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 const useStyles = makeStyles((theme) => ({
   toolbar: {
     borderBottom: `1px solid ${theme.palette.divider}`,
-    // justifyContent: 'center',
   },
   toolbarTitle: {
     flex: 1,
