@@ -1,10 +1,13 @@
 import React, { useState } from "react";
+
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import Icon from "@material-ui/core/Icon";
+
 // @material-ui/icons
 import Email from "@material-ui/icons/Email";
+
 // core components
 import GridContainer from "../grid/GridContainer";
 import GridItem from "../grid/GridItem";
@@ -15,9 +18,15 @@ import CardHeader from "../card/CardHeader";
 import CardFooter from "../card/CardFooter";
 import CustomInput from "../customInput/CustomInput";
 
+// CSS
 import styles from "../../assets/jss/material-kit-react/views/loginPage.js";
 
+// Attachments
 import image from "../../assets/img/bgLogin.jpg";
+
+// AWS Authentication
+import { Auth } from "aws-amplify";
+
 
 const useStyles = makeStyles(styles);
 
@@ -30,8 +39,15 @@ export default function LoginPage(props) {
     return email.length > 0 && password.length > 0;
   };
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
+
+    try {
+      await Auth.signIn(email, password);
+      alert(" yo this is logged in now at ", email);
+    } catch (e) {
+      alert(e.message);
+    }
   };
   
   setTimeout(function() {
@@ -59,6 +75,7 @@ export default function LoginPage(props) {
                     <h4>Login</h4>
                   </CardHeader>
                   <CardBody>
+                    {/* input field that takes in prop for email and updates state onChange */}
                     <CustomInput
                       labelText="Email..."
                       id="email"
@@ -78,6 +95,7 @@ export default function LoginPage(props) {
                         )
                       }}
                     />
+                    {/* input field that takes in prop for password and updates state onChange */}
                     <CustomInput
                       labelText="Password"
                       id="pass"
@@ -100,6 +118,7 @@ export default function LoginPage(props) {
                     />
                   </CardBody>
                   <CardFooter className={classes.cardFooter}>
+                    {/* disabled button until validation is truthy */}
                     <Button 
                       simple color="primary" 
                       size="lg"
