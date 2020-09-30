@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
@@ -26,14 +27,22 @@ import image from "../../assets/img/bgLogin.jpg";
 
 // AWS Authentication
 import { Auth } from "aws-amplify";
+import { useAppContext } from "../../libs/contextLib";
 
 
-const useStyles = makeStyles(styles);
 
 export default function LoginPage(props) {
+  // CSS
   const [cardAnimaton, setCardAnimation] = useState("cardHidden");
+  const useStyles = makeStyles(styles);
+  const classes = useStyles();
+
+  // functionality
+  const { userHasAuthenticated} = useAppContext();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  // const [isLoading, setIsLoading] = useState(false);
+  const history = useHistory();
 
   function validateForm() {
     return email.length > 0 && password.length > 0;
@@ -42,11 +51,17 @@ export default function LoginPage(props) {
   async function handleSubmit(e) {
     e.preventDefault();
 
+    //inform the user that request is loading
+    // setIsLoading(true);
+
     try {
       await Auth.signIn(email, password);
-      alert(" yo this is logged in now at ", email);
+      // TODO: add swal for a nice green check mark
+      userHasAuthenticated(true);
+      history.push("/");
     } catch (e) {
       alert(e.message);
+      // setIsLoading(false);
     }
   };
   
@@ -54,7 +69,6 @@ export default function LoginPage(props) {
     setCardAnimation("");
   }, 700);
 
-  const classes = useStyles();
 
   return (
     <div>

@@ -10,13 +10,12 @@ import ListItem from "@material-ui/core/ListItem";
 
 import styles from "../../assets/jss/material-kit-react/components/headerLinksStyle.js";
 
-const useStyles = makeStyles(styles);
 
-export default function HeaderLinks(props) {
+export default function NonAuthLeftLinks(props) {
+  const useStyles = makeStyles(styles);
   const classes = useStyles();
   return (
     <List className={classes.list}>
-      {/* //TODO: possible profile icon with dropdown here */}
       <ListItem className={classes.listItem}>
         <Link 
           to="/login"
