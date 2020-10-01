@@ -6,12 +6,10 @@ import Container from '@material-ui/core/Container';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import MainFeaturedPost from '../featured/FeaturedMainPost';
 import FeaturedPost from '../featured/FeaturedProduct';
-// replace by hook
 import ProductsMain from '../product/ProductsMain';
 import Sidebar from '../sidebar/Sidebar';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
-import Header from '../header/Header';
 import Footer from '../footer/Footer';
 
 
@@ -19,6 +17,7 @@ const useStyles = makeStyles((theme) => ({
   mainGrid: {
     marginTop: theme.spacing(3),
   },
+  
 }));
 
 
@@ -65,7 +64,6 @@ export default function LandingPage() {
   return (
     <React.Fragment>
       <Container maxWidth="lg">
-        <Header  title="Cereal and Coffee" /> 
         <main>
           <MainFeaturedPost post={mainFeaturedPost} />
           <Grid container spacing={4}>
