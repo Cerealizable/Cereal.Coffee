@@ -8,7 +8,7 @@ import SignUpPage from "./components/signUp/SignUpPage";
 export default function Routes() {
   return (
     <Switch>
-        <Route exact path="/">
+        <Route exact path={["/home", "/"]}>
           <Home />
         </Route>
         <Route exact path="/products">

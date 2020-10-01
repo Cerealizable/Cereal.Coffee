@@ -81,7 +81,7 @@ export default function Header(props) {
   const brandComponent =
     <List className={classesLinks.list}>
       <ListItem className={classesLinks.listItem}>
-        <Link className={classesLinks.navLink} to="/">
+        <Link className={classesLinks.navLink} to="/home">
           {brand}
         </Link>
       </ListItem>

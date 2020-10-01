@@ -79,10 +79,10 @@ export default function LoginPage(props) {
           <GridContainer justify="center">
             <GridItem xs={12} sm={12} md={4}>
               <Card className={classes[cardAnimaton]}>
+                <CardHeader color="primary" className={classes.cardHeader}>
+                  <h3>Login</h3>
+                </CardHeader>
                 <form className={classes.form} onSubmit={handleSubmit}>
-                  <CardHeader color="primary" className={classes.cardHeader}>
-                    <h3>Login</h3>
-                  </CardHeader>
                   <CardBody>
                     {/* input field that takes in prop for email and updates state onChange */}
                     <CustomInput

@@ -7,6 +7,7 @@ import AuthLeftLinks from './components/header/AuthLeftLinks';
 import NonAuthLeftLinks from './components/header/NonAuthLeftLinks';
 import HeaderRightLinks from './components/header/HeaderRightLinks';
 import { AppContext } from "./libs/contextLib";
+import { onError } from "./libs/errorLib";
 import Footer from "./components/footer/Footer";
 import Routes from "./Routes";
 import 'fontsource-roboto';
@@ -31,7 +32,7 @@ function App() {
       if (e === 'No current user'){
         console.info('user has no session');
       } else {
-        alert(e);
+        onError(e);
       }
     }
 
@@ -72,7 +73,6 @@ function App() {
             brand="Cereal and Coffee"
             leftLinks={<NonAuthLeftLinks />}
             rightLinks={<HeaderRightLinks />}
-            // {...rest} ?????
           />
         
         }
