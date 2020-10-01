@@ -44,8 +44,6 @@ function App() {
     await Auth.signOut();
   
     userHasAuthenticated(false);
-  
-    // history.push("/login");
   }
 
   return (

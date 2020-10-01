@@ -3,6 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import Home from "./components/home/Home";
 import Products from "./components/product/Products";
 import LoginPage from "./components/login/LoginPage";
+import SignUpPage from "./components/signUp/SignUpPage";
 
 export default function Routes() {
   return (
@@ -15,6 +16,9 @@ export default function Routes() {
         </Route>
         <Route exact path="/login">
           <LoginPage />
+        </Route>
+        <Route exact path="/signup">
+          <SignUpPage />
         </Route>
         {/* catch all unmatched routes */}
         <Route>

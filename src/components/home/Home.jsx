@@ -10,19 +10,17 @@ import ProductsMain from '../product/ProductsMain';
 import Sidebar from '../sidebar/Sidebar';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
-import Footer from '../footer/Footer';
 
 
 const useStyles = makeStyles((theme) => ({
   mainGrid: {
     marginTop: theme.spacing(3),
   },
-  
 }));
 
 
 const mainFeaturedPost = {
-  title: 'Espresso entkoffeiniert',
+  title: 'Entkoffeiniert Espresso',
   description:
     "A combination of select Latin American and East African beans, and then carefully roasted them to coax out their sweet, vibrant notes. The result is delightfully well-rounded and wonderfully versatile—delicious hot or served over ice.",
   image: 'https://images.unsplash.com/photo-1511537190424-bbbab87ac5eb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80',
@@ -86,7 +84,6 @@ export default function LandingPage() {
             />
           </Grid>
         </main>
-        <Footer />
       </Container>
     </React.Fragment>
   );

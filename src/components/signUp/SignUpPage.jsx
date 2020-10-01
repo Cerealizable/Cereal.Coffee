@@ -31,7 +31,7 @@ import { useAppContext } from "../../libs/contextLib";
 
 
 
-export default function LoginPage(props) {
+export default function SignUpPage(props) {
   // CSS
   const [cardAnimaton, setCardAnimation] = useState("cardHidden");
   const useStyles = makeStyles(styles);
@@ -41,6 +41,7 @@ export default function LoginPage(props) {
   const { userHasAuthenticated} = useAppContext();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const history = useHistory();
 
   function validateForm() {
@@ -51,7 +52,7 @@ export default function LoginPage(props) {
     e.preventDefault();
 
     try {
-      await Auth.signIn(email, password);
+      await Auth.signIn(email, password, confirmPassword);
       // TODO: add swal for a nice green check mark
       userHasAuthenticated(true);
       history.push("/");
@@ -81,7 +82,7 @@ export default function LoginPage(props) {
               <Card className={classes[cardAnimaton]}>
                 <form className={classes.form} onSubmit={handleSubmit}>
                   <CardHeader color="primary" className={classes.cardHeader}>
-                    <h3>Login</h3>
+                    <h3>Sign up</h3>
                   </CardHeader>
                   <CardBody>
                     {/* input field that takes in prop for email and updates state onChange */}
@@ -113,6 +114,26 @@ export default function LoginPage(props) {
                       }}
                       inputProps={{
                         onChange: (e) => setPassword(e.target.value),
+                        type: "password",
+                        endAdornment: (
+                          <InputAdornment position="end">
+                            <Icon className={classes.inputIconsColor}>
+                              lock_outline
+                            </Icon>
+                          </InputAdornment>
+                        ),
+                        autoComplete: "off"
+                      }}
+                    />
+                    <CustomInput
+                      labelText="Confirm Password"
+                      id="confirmpass"
+                      value={confirmPassword}
+                      formControlProps={{
+                        fullWidth: true
+                      }}
+                      inputProps={{
+                        onChange: (e) => setConfirmPassword(e.target.value),
                         type: "password",
                         endAdornment: (
                           <InputAdornment position="end">
