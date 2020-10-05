@@ -1,16 +1,16 @@
 import React from 'react';
-import ProductsMain from './ProductsMain';
-import Footer from '../footer/Footer';
 import Container from '@material-ui/core/Container';
+import ProductsMain from './ProductsMain';
+
 
 export default function Products() {
     return (
         <React.Fragment>
             <Container >
+                {/* modals buttons */}
+                
                 {/* content */}
                 <ProductsMain />
-                {/* end content */}
-                <Footer />
             </Container>
         </React.Fragment>
     );

@@ -8,6 +8,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import CardActions from '@material-ui/core/CardActions';
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
+import NewProductModal from './NewProductModal';
 
 import {products as importedProducts} from '../../data/products';
 
@@ -77,6 +78,8 @@ export default function ProductsMain() {
                         </Grid>
                     ))}
                 </Grid>
+                {/* // ! placement for testing purposes only Header currently blocks functionality of button */}
+                <NewProductModal />
             </Container>
         }
    </React.Fragment>
