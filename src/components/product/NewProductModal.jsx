@@ -51,6 +51,7 @@ export default function NewProductModal() {
   const file = useRef(null);
   const [content, setContent] = useState("");
   const [price, setPrice] = useState("");
+  
 
   function validateForm() {
     return content.length > 0 && price.length > 0;
@@ -94,8 +95,8 @@ export default function NewProductModal() {
       <Button styles="padding-top: 100" color="success" round onClick={() => setModal(true)}>
         New Product
       </Button>
-      <div />
-      <form onSubmit={handleSubmit}>     
+    <div />
+      <form onSubmit={handleSubmit} >     
         <Dialog
           classes={{
             root: classes.center,
