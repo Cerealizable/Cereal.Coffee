@@ -78,7 +78,7 @@ export default function CreateProduct() {
   }
 
   function createProduct(product) {
-    return API.post("products", "/products/create", {
+    return API.post("products", "/products", {
       body: product
     });
   }
@@ -86,6 +86,7 @@ export default function CreateProduct() {
 
 
   return (
+    // ! style is temporary fix for header overlapping form
       <form onSubmit={handleSubmit} style={{paddingTop: "100px"}}>     
         <GridContainer >
           <GridItem>

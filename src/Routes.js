@@ -2,10 +2,11 @@ import React from "react";
 import { Route, Switch } from "react-router-dom";
 import Home from "./components/home/Home";
 import Products from "./components/product/Products";
-import ProductDetailsPage from "./components/product/ProductDetailsPage";
+import ProductDetails from "./components/product/ProductDetails";
 import LoginPage from "./components/login/LoginPage";
 import SignUpPage from "./components/signUp/SignUpPage";
 import CreateProduct from "./components/product/createProduct";
+import Settings from "./components/settings/Settings";
 
 export default function Routes() {
   return (
@@ -16,8 +17,11 @@ export default function Routes() {
         <Route exact path="/products">
           <Products />
         </Route>
+        <Route exact path="/products/create">
+          <CreateProduct />
+        </Route>
         <Route exact path="/products/:id">
-          <ProductDetailsPage />
+          <ProductDetails />
         </Route>
         <Route exact path="/login">
           <LoginPage />
@@ -25,8 +29,8 @@ export default function Routes() {
         <Route exact path="/signup">
           <SignUpPage />
         </Route>
-        <Route exact path="/products/create">
-          <CreateProduct />
+        <Route exact path="/settings" >
+          <Settings />
         </Route>
         {/* catch all unmatched routes */}
         <Route>

@@ -3,29 +3,38 @@ import { useParams, useHistory } from "react-router-dom";
 import { API, Storage} from "aws-amplify";
 import { onError } from "../../libs/errorLib";
 import config from "../../config";
-
+import { s3Upload } from "../../libs/awsLib";
 
 import { FormGroup } from '@material-ui/core';
 import { FormControl } from '@material-ui/core';
-import { ControlLabel } from '@material-ui/core';
+import { FormLabel } from '@material-ui/core';
+import { TextField } from '@material-ui/core';
+
+import styles from '../../assets/jss/material-kit-react/views/loginPage';
+import { makeStyles } from "@material-ui/core/styles";
 
 import Button from '../customButtons/Button';
 
-
-
-
-
 export default function ProductDetails() {
+    // CSS
+    const useStyles = makeStyles(styles);
+    const classes = useStyles();
 
+    // Functionality
     const file = useRef(null);
     const { id } = useParams();
     const history = useHistory();
+
+    // Declarations
     const [product, setProduct] = useState(null);
     const [content, setContent] = useState("");
+    // eslint-disable-next-line
+    const [isDeleting, setIsDeleting] = useState(false);
 
 
     useEffect(() => {
         function loadProduct() {
+            console.log("loading product..");
             return API.get("products", `/products/${id}`);
         }
 
@@ -38,6 +47,7 @@ export default function ProductDetails() {
                     product.attachmentURL = await Storage.vault.get(attachment);
                 }
 
+                console.log("content:", content);
                 setContent(content);
                 setProduct(product);
             } catch (e) {
@@ -59,6 +69,13 @@ export default function ProductDetails() {
     function handleFileChange(e) {
         file.current = e.target.files[0];
     }
+
+    function saveProduct(note) {
+        return API.put("products", `/products/${id}`, {
+          body: note
+        });
+      }
+
     async function handleSubmit(e) {
         let attachment;
 
@@ -70,6 +87,24 @@ export default function ProductDetails() {
             );
             return;
         }
+
+        try {
+            if (file.current) {
+                attachment = await s3Upload(file.current);
+            }
+
+            await saveProduct({
+                content,
+                attachment: attachment || product.attachment
+            });
+            history.push("/products");
+        } catch (e) {
+            onError(e);
+        }
+    };
+
+    function deleteNote() {
+        return API.del("products", `/products/${id}`);
     }
 
     async function handleDelete(e) {
@@ -83,23 +118,33 @@ export default function ProductDetails() {
             return;
         }
 
-        // setIsDeleting(true);
+        setIsDeleting(true);
+
+        try {
+            await deleteNote();
+            history.push("/products");
+        } catch (e) {
+            onError(e);
+            setIsDeleting(false);
+        }
     }
 
     return(
-        <div>
+        <div className={classes.container}>
             {product && (
-                <form onSubmit={handleSubmit}>
-                    <FormGroup controlId="content">
-                        <FormControl 
-                            value={content}
-                            componentClass="textarea"
+                <form onSubmit={handleSubmit} >
+                    <FormGroup controlid="content">
+                        <TextField 
+                            id="standard-required" 
+                            label="Name" 
+                            defaultValue={content} 
                             onChange={e => setContent(e.target.value)}
+                            variant="filled"    
                         />
                     </FormGroup>
                     {product.attachment && (
                         <FormGroup>
-                            <ControlLabel>Attachment</ControlLabel>
+                            <FormLabel>Attachment</FormLabel>
                             <FormControl.Static>
                                 <a
                                     target="_blank"
@@ -111,8 +156,8 @@ export default function ProductDetails() {
                             </FormControl.Static>
                         </FormGroup>
                     )}
-                    <FormGroup controlId="file">
-                        {!product.attachment && <ControlLabel>Attachment</ControlLabel>}
+                    <FormGroup controlid="file">
+                        {!product.attachment && <FormLabel >Attachment</FormLabel>}
                         <FormControl onChange={handleFileChange} type="file" />
                     </FormGroup>
                     <Button 
