@@ -9,8 +9,7 @@ import { useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
-
-// import Button from '../customButtons/Button';
+import Divider from '@material-ui/core/Divider';
 import Button from '@material-ui/core/Button';
 import Avatar from '@material-ui/core/Avatar';
 import Menu from '@material-ui/core/Menu';
@@ -41,6 +40,12 @@ export default function AuthLeftLinks ({logoutFunction}) {
     setAnchorEl(null);
   }
 
+  const handleSettings = () => {
+    setAnchorEl(null);
+
+    history.push("/settings");
+  }
+
   async function handleLogout() {
     await logoutFunction();
 
@@ -62,7 +67,8 @@ export default function AuthLeftLinks ({logoutFunction}) {
           onClose={handleClose}
         >
           <MenuItem onClick={handleClose}>My Profile</MenuItem>
-          <MenuItem onClick={handleClose}>Settings</MenuItem>
+          <MenuItem onClick={handleSettings}>Settings</MenuItem>
+          <Divider light />
           <MenuItem onClick={handleLogout}>Logout</MenuItem>
         </Menu>
         

@@ -6,6 +6,11 @@ import config from "../../config";
 
 export default function Settings() {
   const history = useHistory();
+  const [stripe, setStripe] = useState(null);
+
+  useEffect(() => {
+    setStripe(window.Stripe(config.STRIPE_KEY))
+  }, []);
 
   function billUser(details) {
     return API.post("products", "/billing", {
@@ -15,7 +20,7 @@ export default function Settings() {
 
   return (
     <div className="Settings">
-        
+      hello im the settings page
     </div>
   )
 
