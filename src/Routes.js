@@ -7,10 +7,14 @@ import LoginPage from "./components/login/LoginPage";
 import SignUpPage from "./components/signUp/SignUpPage";
 import CreateProduct from "./components/product/createProduct";
 import Settings from "./components/settings/Settings";
+import StripeBillingForm from "./components/billing/StripeBillingForm";
 
 export default function Routes() {
   return (
     <Switch>
+        <Route exact path="/checkout">
+          <StripeBillingForm />
+        </Route>
         <Route exact path={["/home", "/"]}>
           <Home />
         </Route>

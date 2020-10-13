@@ -56,7 +56,7 @@ export default function AuthLeftLinks ({logoutFunction}) {
     <List className={headerClasses.list}>
       <ListItem className={headerClasses.listItem}>
         {/* // TODO: replace favorite component with actual user profile image */}
-        <Button justIcon round aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
+        <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
           <Avatar alt="name" src="https://source.unsplash.com/featured/?Avatar" />
         </Button>
         <Menu

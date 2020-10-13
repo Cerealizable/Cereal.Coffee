@@ -18,12 +18,11 @@ import config from "../../config";
 // material-ui components
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from '@material-ui/core/TextField';
-
-
-// core components
 import Button from "../customButtons/Button";
 import GridContainer from "../grid/GridContainer";
 import GridItem from "../grid/GridItem";
+
+// custom core components
 import CustomInput from "../customInput/CustomInput";
 
 // CSS
