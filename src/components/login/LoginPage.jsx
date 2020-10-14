@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
 
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
@@ -41,7 +40,6 @@ export default function LoginPage(props) {
   const { userHasAuthenticated} = useAppContext();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const history = useHistory();
 
   function validateForm() {
     return email.length > 0 && password.length > 0;
@@ -54,7 +52,6 @@ export default function LoginPage(props) {
       await Auth.signIn(email, password);
       // TODO: add swal for a nice green check mark
       userHasAuthenticated(true);
-      history.push("/");
     } catch (e) {
       alert(e.message);
     }

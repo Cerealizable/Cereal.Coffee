@@ -1,5 +1,12 @@
 import React from "react";
+
+//Routing
 import { Route, Switch } from "react-router-dom";
+import AuthenticatedRoute from "./components/authentication/AuthenticatedRoute";
+import UnauthenticatedRoute from "./components/authentication/UnauthenticatedRoute";
+
+
+// Components
 import Home from "./components/home/Home";
 import Products from "./components/product/Products";
 import ProductDetails from "./components/product/ProductDetails";
@@ -8,34 +15,35 @@ import SignUpPage from "./components/signUp/SignUpPage";
 import CreateProduct from "./components/product/createProduct";
 import Settings from "./components/settings/Settings";
 import StripeBillingForm from "./components/billing/StripeBillingForm";
+import UnathenticatedRoute from "./components/authentication/UnauthenticatedRoute";
 
 export default function Routes() {
   return (
     <Switch>
-        <Route exact path="/checkout">
+        <AuthenticatedRoute exact path="/checkout">
           <StripeBillingForm />
-        </Route>
-        <Route exact path={["/home", "/"]}>
+        </AuthenticatedRoute>
+        <UnathenticatedRoute exact path={["/home", "/"]}>
           <Home />
-        </Route>
-        <Route exact path="/products">
+        </UnathenticatedRoute>
+        <UnauthenticatedRoute exact path="/products">
           <Products />
-        </Route>
+        </UnauthenticatedRoute>
         <Route exact path="/products/create">
           <CreateProduct />
         </Route>
-        <Route exact path="/products/:id">
+        <UnathenticatedRoute exact path="/products/:id">
           <ProductDetails />
-        </Route>
-        <Route exact path="/login">
+        </UnathenticatedRoute>
+        <UnathenticatedRoute exact path="/login">
           <LoginPage />
-        </Route>
-        <Route exact path="/signup">
+        </UnathenticatedRoute>
+        <UnathenticatedRoute exact path="/signup">
           <SignUpPage />
-        </Route>
-        <Route exact path="/settings" >
+        </UnathenticatedRoute>
+        <AuthenticatedRoute exact path="/settings" >
           <Settings />
-        </Route>
+        </AuthenticatedRoute>
         {/* catch all unmatched routes */}
         <Route>
             <Route path="/" render={() => <div>OOPS! This doesn't exist.</div>} />
