@@ -15,7 +15,6 @@ import SignUpPage from "./components/signUp/SignUpPage";
 import CreateProduct from "./components/product/createProduct";
 import Settings from "./components/settings/Settings";
 import StripeBillingForm from "./components/billing/StripeBillingForm";
-import UnathenticatedRoute from "./components/authentication/UnauthenticatedRoute";
 
 export default function Routes() {
   return (
@@ -23,24 +22,24 @@ export default function Routes() {
         <AuthenticatedRoute exact path="/checkout">
           <StripeBillingForm />
         </AuthenticatedRoute>
-        <UnathenticatedRoute exact path={["/home", "/"]}>
+        <Route exact path={["/home", "/"]}>
           <Home />
-        </UnathenticatedRoute>
-        <UnauthenticatedRoute exact path="/products">
-          <Products />
-        </UnauthenticatedRoute>
-        <Route exact path="/products/create">
-          <CreateProduct />
         </Route>
-        <UnathenticatedRoute exact path="/products/:id">
+        <Route exact path="/products">
+          <Products />
+        </Route>
+        <AuthenticatedRoute exact path="/products/create">
+          <CreateProduct />
+        </AuthenticatedRoute>
+        <Route exact path="/products/:id">
           <ProductDetails />
-        </UnathenticatedRoute>
-        <UnathenticatedRoute exact path="/login">
+        </Route>
+        <UnauthenticatedRoute exact path="/login">
           <LoginPage />
-        </UnathenticatedRoute>
-        <UnathenticatedRoute exact path="/signup">
+        </UnauthenticatedRoute>
+        <UnauthenticatedRoute exact path="/signup">
           <SignUpPage />
-        </UnathenticatedRoute>
+        </UnauthenticatedRoute>
         <AuthenticatedRoute exact path="/settings" >
           <Settings />
         </AuthenticatedRoute>
