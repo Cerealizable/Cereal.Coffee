@@ -1,14 +1,24 @@
 import React, { useState, useEffect } from "react";
-// import { useHistory } from "react-router-dom";
-import { API } from "aws-amplify" ;
-import {onError} from "../../libs/errorLib";
-import config from "../../config";
-import { Elements, StripeProvider } from "react-stripe-elements";
-import StripeBillingForm from "../billing/StripeBillingForm";
 
+// Routing 
+import { useHistory } from "react-router-dom";
+
+// API
+import { API } from "aws-amplify" ;
+import { Elements, StripeProvider } from "react-stripe-elements";
+
+// Error checking
+import {onError} from "../../libs/errorLib";
+
+// configuration
+import config from "../../config";
+
+// CSS
+import StripeBillingForm from "../billing/StripeBillingForm";
+import Swal from 'sweetalert2'
 
 export default function Settings() {
-  // const history = useHistory();
+  const history = useHistory();
   const [stripe, setStripe] = useState(null);
 
   useEffect(() => {
@@ -29,8 +39,17 @@ export default function Settings() {
         source: token.id
       });
   
-      alert("Your card has been charged successfully!");
-      // history.push("/");
+      Swal.fire({
+        position: 'top-middle',
+        showConfirmButton: false,
+        title: "Purchase Successful!",
+        icon: "success",
+        timer: 1200,
+        timerProgressBar: true
+      }).then(() => {
+        return history.push("/");
+      });
+
     } catch (e) {
       onError(e);
     }

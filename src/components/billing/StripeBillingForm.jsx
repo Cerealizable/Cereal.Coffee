@@ -1,29 +1,25 @@
 import React, { useState } from "react";
-import Button from "../customButtons/Button";
+
+// Stripe API
+import { CardElement, injectStripe } from "react-stripe-elements";
+
+// CSS
+import { makeStyles } from "@material-ui/core/styles";
+import styles from '../../assets/css/billingForm/billingFormStyle';
+import '../../assets/css/billingForm/billingform.css'
+
+// MUI Core components 
+import Paper from '@material-ui/core/Paper';
+import Divider from "@material-ui/core/Divider";
 import GridContainer from "../grid/GridContainer";
 import GridItem from "../grid/GridItem";
 
-import styles from '../../assets/css/billingForm/billingFormStyle';
-import '../../assets/css/billingForm/billingform.css'
-import { makeStyles } from "@material-ui/core/styles";
-import { CardElement, injectStripe } from "react-stripe-elements";
-import Paper from '@material-ui/core/Paper';
-
+// Core components
 import Card from "../card/Card";
 import CardBody from "../card/CardBody";
 import CardFooter from "../card/CardFooter";
 import CustomInput from "../customInput/CustomInput";
-import Divider from "@material-ui/core/Divider";
-
-
-
-// drawer 
-// shopping cart
-// needs names and prices
-// needs to add up all prices
-
-
-// 1)
+import Button from "../customButtons/Button";
 
 function StripeBillingForm({onSubmit, ...props}) {
   // CSS
@@ -36,6 +32,7 @@ function StripeBillingForm({onSubmit, ...props}) {
   }, 700);
 
 
+  // functionality
   const [customerName, setCustomerName] = useState("");
   const [price, setPrice] = useState(0);
   const [quantity, setQuantity] = useState(0);
@@ -52,6 +49,7 @@ function StripeBillingForm({onSubmit, ...props}) {
            isCardComplete;
   }
 
+  // on submit reach to stripe API for token of transaction
   async function handleSubmitClick(e) {
     console.log(" I am hitting my handleSubmitClick fx");
     e.preventDefault();
