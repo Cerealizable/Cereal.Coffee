@@ -27,6 +27,9 @@ import stylesHeader from "../../assets/jss/material-kit-react/components/headerS
 import stylesLink from "../../assets/jss/material-kit-react/components/headerLinksStyle.js";
 
 
+
+
+
 const useStylesHeader = makeStyles(stylesHeader);
 const useStylesLinks = makeStyles(stylesLink);
 
@@ -81,16 +84,12 @@ export default function Header(props) {
   const brandComponent =
     <List className={classesLinks.list}>
       <ListItem className={classesLinks.listItem}>
-        <Link className={classesLinks.navLink} to="/">
+        <Link className={classesLinks.navLink} to="/home">
           {brand}
         </Link>
       </ListItem>
     </List>;
   
-  
-  
-  
-  // <Button className={classes.title}><Link className={classes.navLink}>{brand}</Link></Button>;
 
   return (
     <AppBar className={appBarClasses}>

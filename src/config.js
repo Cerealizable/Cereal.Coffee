@@ -1,7 +1,7 @@
 export default {
     s3: {
       REGION: "us-west-2",
-      BUCKET: "cereal-coffee-shop"
+      BUCKET: "cereal-coffee-app-2-api-dev-attachmentsbucket-55025pgktvll"
     },
     apiGateway: {
       REGION: "us-west-2",
@@ -11,6 +11,7 @@ export default {
       REGION: "us-west-2",
       USER_POOL_ID: "us-west-2_r0P1y9kiA",
       APP_CLIENT_ID: "37tl09ifd5c3b2gh98e89os5el",
-      IDENTITY_POOL_ID: "us-west-2:f96c9f62-3398-4ebe-9ace-65df5956517e"
-    }
+      IDENTITY_POOL_ID: "us-west-2:abf607e2-34d8-4156-b464-312dacb7c2f8"
+    },
+    STRIPE_KEY: "pk_test_51HSSaVJTHaakjM27QJfqv7a0MfXRLtOynXdaz17urPEcbqJxTsgA6tf5eeycLgMJcdS6DNGsp2RUWy2sY9xi1AEv004gkYhAmn",
   };

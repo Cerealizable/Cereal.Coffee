@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
 
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
@@ -41,7 +40,6 @@ export default function LoginPage(props) {
   const { userHasAuthenticated} = useAppContext();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const history = useHistory();
 
   function validateForm() {
     return email.length > 0 && password.length > 0;
@@ -54,7 +52,6 @@ export default function LoginPage(props) {
       await Auth.signIn(email, password);
       // TODO: add swal for a nice green check mark
       userHasAuthenticated(true);
-      history.push("/");
     } catch (e) {
       alert(e.message);
     }
@@ -79,10 +76,10 @@ export default function LoginPage(props) {
           <GridContainer justify="center">
             <GridItem xs={12} sm={12} md={4}>
               <Card className={classes[cardAnimaton]}>
+                <CardHeader color="primary" className={classes.cardHeader}>
+                  <h3>Login</h3>
+                </CardHeader>
                 <form className={classes.form} onSubmit={handleSubmit}>
-                  <CardHeader color="primary" className={classes.cardHeader}>
-                    <h3>Login</h3>
-                  </CardHeader>
                   <CardBody>
                     {/* input field that takes in prop for email and updates state onChange */}
                     <CustomInput
