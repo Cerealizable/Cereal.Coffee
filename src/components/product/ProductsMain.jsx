@@ -49,7 +49,7 @@ export default function ProductsMain() {
   const [products, setProducts] = useState([]);
 
   function loadProducts() {
-    return API.get("products", "/products/get")
+    return API.get("products", "/notes/products")
   }
   
   useEffect(() => {
