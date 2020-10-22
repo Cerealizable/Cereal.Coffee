@@ -83,7 +83,7 @@ export default function NewProductModal() {
   }
 
   function createProduct(product) {
-    return API.post("products", "/products/create", {
+    return API.post("products", "/products", {
       body: product
     });
   }
