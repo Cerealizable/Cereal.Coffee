@@ -2,20 +2,21 @@ const dev = {
   STRIPE_KEY: "pk_test_51HSSaVJTHaakjM27QJfqv7a0MfXRLtOynXdaz17urPEcbqJxTsgA6tf5eeycLgMJcdS6DNGsp2RUWy2sY9xi1AEv004gkYhAmn",
   s3: {
     REGION: "us-east-1",
-    BUCKET: "dev-cereal-coffee-shop-infra-s3-uploads4f6eb0fd-1aq1kf2pw4gjg"
+    BUCKET: "dev-cereal-coffee-shop-infra-2-s3-uploads4f6eb0fd-skif1swwahp8"
   },
   apiGateway: {
     REGION: "us-east-1",
-    URL: "api.cerealizable.com/dev"
+    URL: "https://me9qkgeq4m.execute-api.us-east-1.amazonaws.com/dev"
   },
   cognito: {
     REGION: "us-east-1",
-    USER_POOL_ID: "us-east-1_9eXnfOYq5",
-    APP_CLIENT_ID: "3l58ufc14pe1gokjie1ibr79id",
-    IDENTITY_POOL_ID: "us-east-1:abc4706b-c071-4c6a-8475-301348955711"
+    USER_POOL_ID: "us-east-1_MXHYUQoC4",
+    APP_CLIENT_ID: "7hcsvp5k398mahsh7d6akoiho",
+    IDENTITY_POOL_ID: "us-east-1:14652545-c883-43a6-bf4e-290db3917c79"
   }
 };
 
+// TODO: update with correct prod information below
 const prod = {
   STRIPE_KEY: "pk_test_51HSSaVJTHaakjM27QJfqv7a0MfXRLtOynXdaz17urPEcbqJxTsgA6tf5eeycLgMJcdS6DNGsp2RUWy2sY9xi1AEv004gkYhAmn",
   s3: {
